@@ -157,6 +157,16 @@ public final class ModuleHolder {
   }
 
   func post(event: EventName) {
+    switch event {
+    case .appEntersForeground:
+      module.appWillEnterForeground()
+    case .appBecomesActive:
+      module.appDidBecomeActive()
+    case .appEntersBackground:
+      module.appDidEnterBackground()
+    default:
+      break
+    }
     listeners(forEvent: event).forEach {
       try? $0.call(module, nil)
     }

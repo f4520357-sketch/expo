@@ -53,6 +53,18 @@ public protocol AnyModule: AnyObject, AnyArgument {
   /// A lifecycle hook that is called when the last JavaScript listener for the given event is removed.
   /// An equivalent of the `OnStopObserving` DSL component.
   func didStopListening(event: String)
+
+  /// A lifecycle hook that is called when the app is about to enter the foreground.
+  /// An equivalent of the `OnAppEntersForeground` DSL component.
+  func appWillEnterForeground()
+
+  /// A lifecycle hook that is called when the app becomes active.
+  /// An equivalent of the `OnAppBecomesActive` DSL component.
+  func appDidBecomeActive()
+
+  /// A lifecycle hook that is called when the app enters the background.
+  /// An equivalent of the `OnAppEntersBackground` DSL component.
+  func appDidEnterBackground()
 }
 
 extension AnyModule {
@@ -92,4 +104,10 @@ extension AnyModule {
   public func didStartListening(event: String) {}
 
   public func didStopListening(event: String) {}
+
+  public func appWillEnterForeground() {}
+
+  public func appDidBecomeActive() {}
+
+  public func appDidEnterBackground() {}
 }
